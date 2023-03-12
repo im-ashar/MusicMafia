@@ -1,0 +1,6 @@
+﻿body {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.781), rgba(0, 0, 0, 0.781)), url("../background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}

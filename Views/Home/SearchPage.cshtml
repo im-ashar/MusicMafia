@@ -1,0 +1,88 @@
+﻿@model Task<SearchPage>
+
+<div class="flex flex-col m-auto p-auto">
+    <h1 class="text-center text-red-600 m-3 font-extrabold text-5xl ">Songs</h1>
+    <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+        <div class="flex flex-nowrap ">
+            @foreach (var item in Model.Result.Data.Songs.Results)
+            {
+                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                    <div class="music-img">
+                        <img src="@item.Image[item.Image.Count-1].Link"
+                             width="200"
+                             height="300"
+                             class="aspect-square object-cover" />
+                    </div>
+                    <div class="music-title"></div>
+                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title.Replace("&quot;","\"")</h3>
+                    <div class="music-artist">
+                        <h3 class="pl-2">@item.PrimaryArtists</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="flex flex-col m-auto p-auto">
+    <h1 class="text-center text-red-600 m-3 font-extrabold text-5xl ">Albums</h1>
+    <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+        <div class="flex flex-nowrap ">
+            @foreach (var item in Model.Result.Data.Albums.Results)
+            {
+                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                    <div class="music-img">
+                        <img src="@item.Image[item.Image.Count-1].Link"
+                             width="200"
+                             height="300"
+                             class="aspect-square object-cover" />
+                    </div>
+                    <div class="music-title"></div>
+                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title.Replace("&quot;","\"")</h3>
+                    <div class="music-artist">
+                        <h3 class="pl-2">@item.Artist</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="flex flex-col m-auto p-auto">
+    <h1 class="text-center text-red-600 m-3 font-extrabold text-5xl ">Artists</h1>
+    <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+        <div class="flex flex-nowrap ">
+            @foreach (var item in Model.Result.Data.Artists.Results)
+            {
+                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                    <div class="music-img">
+                        <img src="@item.Image[item.Image.Count-1].Link"
+                             width="200"
+                             height="300"
+                             class="aspect-square object-cover" />
+                    </div>
+                    <div class="music-title"></div>
+                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title.Replace("&quot;","\"")</h3>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="flex flex-col m-auto p-auto">
+    <h1 class="text-center text-red-600 m-3 font-extrabold text-5xl ">Playlists</h1>
+    <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+        <div class="flex flex-nowrap ">
+            @foreach (var item in Model.Result.Data.Playlists.Results)
+            {
+                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                    <div class="music-img">
+                        <img src="@item.Image[item.Image.Count-1].Link"
+                             width="200"
+                             height="300"
+                             class="aspect-square object-cover" />
+                    </div>
+                    <div class="music-title"></div>
+                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title.Replace("&quot;","\"")</h3>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -6,19 +6,21 @@
         <div class="flex flex-nowrap ">
             @foreach (var item in Model.Result.Data.Songs.Results)
             {
-                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
-                    <div class="music-img">
-                        <img src="@item.Image[item.Image.Count-1].Link"
-                             width="200"
-                             height="300"
-                             class="aspect-square object-cover" />
+                <a asp-action="PlayNowSong" asp-controller="Home" asp-route-playNowSongId="@item.Id">
+                    <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                        <div class="music-img">
+                            <img src="@item.Image[item.Image.Count-1].Link"
+                                 width="200"
+                                 height="300"
+                                 class="aspect-square object-cover" />
+                        </div>
+                        <div class="music-title"></div>
+                        <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title.Replace("&quot;","\"")</h3>
+                        <div class="music-artist">
+                            <h3 class="pl-2">@item.PrimaryArtists</h3>
+                        </div>
                     </div>
-                    <div class="music-title"></div>
-                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title.Replace("&quot;","\"")</h3>
-                    <div class="music-artist">
-                        <h3 class="pl-2">@item.PrimaryArtists</h3>
-                    </div>
-                </div>
+                </a>
             }
         </div>
     </div>
@@ -86,3 +88,7 @@
         </div>
     </div>
 </div>
+
+
+
+

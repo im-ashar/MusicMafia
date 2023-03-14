@@ -24,6 +24,12 @@ namespace MusicMafia.Controllers
             var searchList = _apicalls.GetSearchItem(query);
             return View(searchList);
         }
+        public IActionResult PlayNowSong(string playNowSongId)
+        {
+            var playNowSongResult = _apicalls.GetPlayNow(playNowSongId);
+            return View(playNowSongResult);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

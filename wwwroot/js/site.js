@@ -1,4 +1,13 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿var audio = document.getElementById('audio');
+var playpause = document.getElementById("play");
 
-// Write your JavaScript code.
+
+function togglePlayPause() {
+    if (audio.paused || audio.ended) {
+        playpause.title = "Pause";
+        audio.play();
+    } else {
+        playpause.title = "Play";
+        audio.pause();
+    }
+}

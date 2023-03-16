@@ -1,5 +1,21 @@
 ﻿@model Task<HomePage>
+@{
+    foreach (var item in Model.Result.Data.Trending.Albums.ToList())
+    {
+        if (item.PrimaryArtists.Count == 0 && item.FeaturedArtists.Count == 0 && item.Artists.Count == 0)
+        {
+            Model.Result.Data.Trending.Albums.Remove(item);
+        }
+    }
+    foreach (var item in Model.Result.Data.Albums.ToList())
+    {
+        if (item.PrimaryArtists.Count == 0 && item.FeaturedArtists.Count == 0 && item.Artists.Count == 0)
+        {
+            Model.Result.Data.Albums.Remove(item);
+        }
+    }
 
+}
 <div class="flex flex-col  m-auto p-auto">
     <h1 class="text-center text-red-600 m-3 font-extrabold text-5xl ">Trending Now</h1>
     <h3 class="text-white m-3 font-extrabold text-2xl text-center">Tracks</h3>
@@ -7,19 +23,21 @@
         <div class="flex flex-nowrap ">
             @foreach (var item in Model.Result.Data.Trending.Songs)
             {
-                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
-                    <div class="music-img">
-                        <img src="@item.Image[item.Image.Count-1].Link"
-                             width="200"
-                             height="300"
-                             class="aspect-square object-cover" />
+                <a asp-action="PlayNowSong" asp-controller="Home" asp-route-playNowSongId="@item.Id">
+                    <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                        <div class="music-img">
+                            <img src="@item.Image[item.Image.Count-1].Link"
+                                 width="200"
+                                 height="300"
+                                 class="aspect-square object-cover" />
+                        </div>
+                        <div class="music-title"></div>
+                        <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Name.ToString().Replace("&quot;","\"")</h3>
+                        <div class="music-artist">
+                            <h3 class="pl-2">@item.PrimaryArtists[0].Name</h3>
+                        </div>
                     </div>
-                    <div class="music-title"></div>
-                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Name.Replace("&quot;","\"")</h3>
-                    <div class="music-artist">
-                        <h3 class="pl-2">@item.PrimaryArtists[0].Name</h3>
-                    </div>
-                </div>
+                </a>
             }
         </div>
     </div>
@@ -32,19 +50,21 @@
         <div class="flex flex-nowrap ">
             @foreach (var item in Model.Result.Data.Trending.Albums)
             {
-                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
-                    <div class="music-img">
-                        <img src="@item.Image[item.Image.Count-1].Link"
-                             width="200"
-                             height="300"
-                             class="aspect-square object-cover" />
+                <a asp-action="PlayNowAlbum" asp-controller="Home" asp-route-playNowAlbumId="@item.Id">
+                    <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                        <div class="music-img">
+                            <img src="@item.Image[item.Image.Count-1].Link"
+                                 width="200"
+                                 height="300"
+                                 class="aspect-square object-cover" />
+                        </div>
+                        <div class="music-title"></div>
+                        <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Name</h3>
+                        <div class="music-artist">
+                            <h3 class="pl-2" >@item.Artists[0].Name</h3>
+                        </div>
                     </div>
-                    <div class="music-title"></div>
-                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Name.Replace("&quot;","\"")</h3>
-                    <div class="music-artist">
-                        <h3 class="pl-2">@item.Artists[0].Name</h3>
-                    </div>
-                </div>
+                </a>
             }
         </div>
     </div>
@@ -56,19 +76,21 @@
         <div class="flex flex-nowrap ">
             @foreach (var item in Model.Result.Data.Charts)
             {
-                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
-                    <div class="music-img">
-                        <img src="@item.Image[item.Image.Count-1].Link"
-                             width="200"
-                             height="300"
-                             class="aspect-square object-cover" />
+                <a asp-action="PlayNowPlaylist" asp-controller="Home" asp-route-playNowPlaylistId="@item.Id">
+                    <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                        <div class="music-img">
+                            <img src="@item.Image[item.Image.Count-1].Link"
+                                 width="200"
+                                 height="300"
+                                 class="aspect-square object-cover" />
+                        </div>
+                        <div class="music-title"></div>
+                        <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title</h3>
+                        <div class="music-artist">
+                            <h3 class="pl-2">@item.Subtitle</h3>
+                        </div>
                     </div>
-                    <div class="music-title"></div>
-                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title.Replace("&quot;","\"")</h3>
-                    <div class="music-artist">
-                        <h3 class="pl-2">@item.Subtitle</h3>
-                    </div>
-                </div>
+                </a>
             }
         </div>
     </div>
@@ -80,25 +102,31 @@
         <div class="flex flex-nowrap ">
             @foreach (var item in Model.Result.Data.Albums)
             {
-                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
-                    <div class="music-img">
-                        <img src="@item.Image[item.Image.Count-1].Link"
-                             width="200"
-                             height="300"
-                             class="aspect-square object-cover" />
+                <a asp-action="PlayNowAlbum" asp-controller="Home" asp-route-playNowAlbumId="@item.Id">
+                    <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                        <div class="music-img">
+                            <img src="@item.Image[item.Image.Count-1].Link"
+                                 width="200"
+                                 height="300"
+                                 class="aspect-square object-cover" />
+                        </div>
+                        <div class="music-title"></div>
+                        <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Name</h3>
+                        <div class="music-artist">
+                            <h3 class="pl-2 truncate w-[200px]">
+                                @{
+                                    var artist=string.Empty;
+                                    foreach (var i in item.Artists)
+                                    {
+                                        artist=artist+i.Name + ", ";
+
+                                    }
+                                }
+                                @artist
+                            </h3>
+                        </div>
                     </div>
-                    <div class="music-title"></div>
-                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Name.Replace("&quot;","\"")</h3>
-                    <div class="music-artist">
-                        <h3 class="pl-2 truncate h-[50px]">
-                            @foreach (var i in item.Artists)
-                            {
-                                @i.Name
-                                <br />
-                            }
-                        </h3>
-                    </div>
-                </div>
+                </a>
             }
         </div>
     </div>
@@ -110,19 +138,21 @@
         <div class="flex flex-nowrap ">
             @foreach (var item in Model.Result.Data.Playlists)
             {
-                <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
-                    <div class="music-img">
-                        <img src="@item.Image[item.Image.Count-1].Link"
-                             width="200"
-                             height="300"
-                             class="aspect-square object-cover" />
+                <a asp-action="PlayNowPlaylist" asp-controller="Home" asp-route-playNowPlaylistId="@item.Id">
+                    <div class="music-info text-white m-3 bg-gray-800  inline-block rounded border-gray-900 border-8 hover:scale-110 duration-300 shadow-slate-900 shadow-lg">
+                        <div class="music-img">
+                            <img src="@item.Image[item.Image.Count-1].Link"
+                                 width="200"
+                                 height="300"
+                                 class="aspect-square object-cover" />
+                        </div>
+                        <div class="music-title"></div>
+                        <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]" id="music-title">@item.Title</h3>
+                        <div class="music-artist">
+                            <h3 class="pl-2" id="music-artist">Total Tracks: @item.SongCount</h3>
+                        </div>
                     </div>
-                    <div class="music-title"></div>
-                    <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title.Replace("&quot;","\"")</h3>
-                    <div class="music-artist">
-                        <h3 class="pl-2">Total Tracks: @item.SongCount</h3>
-                    </div>
-                </div>
+                </a>
             }
         </div>
     </div>

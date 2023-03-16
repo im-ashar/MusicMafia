@@ -25,7 +25,7 @@ body {
     background-color: #ddd;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     margin-top: 20px;
-    padding:20px;
+    padding: 20px;
 }
 
 .details {
@@ -36,7 +36,7 @@ body {
 }
 
 .track-art {
-    margin:4px;
+    margin: 4px;
     height: 200px;
     width: 200px;
     border: 2px solid #FFFAFA;
@@ -53,24 +53,24 @@ body {
 
 .now-playing {
     font-size: 1rem;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .track-name {
-    font-size: 30px;
-    font-weight:bolder;
+    font-size: 15px;
+    font-weight: bolder;
 }
 
 .track-artist {
     margin-top: 5px;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
 }
 
 .active {
@@ -179,7 +179,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin:10px;
+    margin: 10px;
 }
 
     .loader .stroke {
@@ -230,3 +230,5 @@ p {
 .stroke:nth-child(7) {
     animation-delay: 0s;
 }
+
+

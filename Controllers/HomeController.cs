@@ -26,8 +26,18 @@ namespace MusicMafia.Controllers
         }
         public IActionResult PlayNowSong(string playNowSongId)
         {
-            var playNowSongResult = _apicalls.GetPlayNow(playNowSongId);
+            var playNowSongResult = _apicalls.GetPlayNowSong(playNowSongId);
             return View(playNowSongResult);
+        }
+        public IActionResult PlayNowAlbum(string playNowAlbumId)
+        {
+            var playNowAlbumResult = _apicalls.GetPlayNowAlbum(playNowAlbumId);
+            return View(playNowAlbumResult);
+        }
+        public IActionResult PlayNowPlaylist(string playNowPlaylistId)
+        {
+            var playNowPlaylistResult = _apicalls.GetPlayNowPlaylist(playNowPlaylistId);
+            return View(playNowPlaylistResult);
         }
 
 

@@ -2,16 +2,19 @@
 using MusicMafia.Models.HomePageModel;
 using MusicMafia.Models.SearchPageModel;
 using MusicMafia.Models.PlayNowSongModel;
+using MusicMafia.Models.PlayNowAlbumModel;
+using MusicMafia.Models.PlayNowPlaylistModel;
+
 
 namespace MusicMafia.Models.APICalls
 {
-    public class APICalls:IAPICalls
+    public class APICalls : IAPICalls
     {
         public async Task<HomePage> GetHomePage()
         {
             HttpClient client = new HttpClient();
             // Make the request and retrieve the response
-            HttpResponseMessage response = await client.GetAsync("https://musicmafia.vercel.app/modules?language=hindi,urdu");
+            HttpResponseMessage response = await client.GetAsync("https://musicmafia.vercel.app/modules?language=hindi");
 
             // Read the response as a string
             var responseBody = await response.Content.ReadAsStringAsync();
@@ -29,7 +32,7 @@ namespace MusicMafia.Models.APICalls
             SearchPage obj = JsonConvert.DeserializeObject<SearchPage>(responseBody);
             return obj;
         }
-        public async Task<PlayNowSongPage> GetPlayNow(string playNowSongId)
+        public async Task<PlayNowSongPage> GetPlayNowSong(string playNowSongId)
         {
             HttpClient client = new HttpClient();
             // Make the request and retrieve the response
@@ -38,6 +41,32 @@ namespace MusicMafia.Models.APICalls
             // Read the response as a string
             var responseBody = await response.Content.ReadAsStringAsync();
             PlayNowSongPage obj = JsonConvert.DeserializeObject<PlayNowSongPage>(responseBody);
+            return obj;
+        }
+        public async Task<PlayNowAlbumPage> GetPlayNowAlbum(string playNowAlbumId)
+        {
+            HttpClient client = new HttpClient();
+            // Make the request and retrieve the response
+            HttpResponseMessage response = await client.GetAsync($"https://musicmafia.vercel.app/albums?id={playNowAlbumId}");
+
+            // Read the response as a string
+            var responseBody = await response.Content.ReadAsStringAsync();
+            responseBody = responseBody.Replace("\"downloadUrl\":false", "\"downloadUrl\":[]");
+            responseBody = responseBody.Replace("\"image\":false", "\"image\":[]");
+            PlayNowAlbumPage obj = JsonConvert.DeserializeObject<PlayNowAlbumPage>(responseBody);
+            return obj;
+        }
+        public async Task<PlayNowPlaylistPage> GetPlayNowPlaylist(string playNowPlaylistId)
+        {
+            HttpClient client = new HttpClient();
+            // Make the request and retrieve the response
+            HttpResponseMessage response = await client.GetAsync($"https://musicmafia.vercel.app/playlists?id={playNowPlaylistId}");
+
+            // Read the response as a string
+            var responseBody = await response.Content.ReadAsStringAsync();
+            responseBody = responseBody.Replace("\"downloadUrl\":false", "\"downloadUrl\":[]");
+            responseBody = responseBody.Replace("\"image\":false", "\"image\":[]");
+            PlayNowPlaylistPage obj = JsonConvert.DeserializeObject<PlayNowPlaylistPage>(responseBody);
             return obj;
         }
     }

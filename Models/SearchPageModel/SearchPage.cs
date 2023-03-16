@@ -3,7 +3,7 @@
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class SearchPage
     {
-        public string Status { get; set; }
+        public object Status { get; set; }
         public object Message { get; set; }
         public Data Data { get; set; }
     }
@@ -30,8 +30,8 @@
 
     public class Image
     {
-        public string Quality { get; set; }
-        public string Link { get; set; }
+        public object Quality { get; set; }
+        public object Link { get; set; }
     }
 
     public class Playlists
@@ -42,20 +42,20 @@
 
     public class Result
     {
-        public string Id { get; set; }
-        public string Title { get; set; }
+        public object Id { get; set; }
+        public object Title { get; set; }
         public List<Image> Image { get; set; }
-        public string Url { get; set; }
-        public string Type { get; set; }
-        public string Description { get; set; }
+        public object Url { get; set; }
+        public object Type { get; set; }
+        public object Description { get; set; }
         public int Position { get; set; }
-        public string Album { get; set; }
-        public string PrimaryArtists { get; set; }
-        public string Singers { get; set; }
-        public string Language { get; set; }
-        public string Artist { get; set; }
-        public string Year { get; set; }
-        public string SongIds { get; set; }
+        public object Album { get; set; }
+        public object PrimaryArtists { get; set; }
+        public object Singers { get; set; }
+        public object Language { get; set; }
+        public object Artist { get; set; }
+        public object Year { get; set; }
+        public object SongIds { get; set; }
     }
 
 

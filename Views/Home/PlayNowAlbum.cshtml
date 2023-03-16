@@ -1,7 +1,17 @@
-﻿@model Task<PlayNowSongPage>
+﻿@model Task<PlayNowAlbumPage>
 
 @section playnowsongcss{
     <link rel="stylesheet" href="~/css/playnowsong.css" asp-append-version="true" />
+}
+@{
+    var list = Model.Result.Data.Songs;
+    foreach (var song in list.ToList())
+    {
+        if (song.DownloadUrl.Count == 0 || song.Image.Count == 0)
+        {
+            Model.Result.Data.Songs.Remove(song);
+        }
+    }
 }
 
 
@@ -11,7 +21,7 @@
             <div class="now-playing">PLAYING x OF y</div>
             <div class="track-art"></div>
             <div class="track-name truncate w-[200px] text-center">Track Name</div>
-            <div class="track-artist truncate w-[200px] text-center ">Track Artist</div>
+            <div class="track-artist truncate w-[200px] text-center">Track Artist</div>
         </div>
 
         <div class="slider_container">
@@ -78,16 +88,20 @@
     let isRandom = false;
     let updateTimer;
 
-    const music_data = @Html.Raw(Json.Serialize(Model.Result.Data[0]));
+    const music_data = @Html.Raw(Json.Serialize(Model.Result.Data.Songs));
     console.log(music_data);
-    const music_list = [
-        {
-            img: music_data.image[music_data.image.length - 1].link,
-            name: music_data.name,
-            artist: music_data.primaryArtists,
-            music: music_data.downloadUrl[music_data.downloadUrl.length - 1].link
-        },
-    ];
+    const music_list = []
+    music_data.forEach(creatingList);
+
+    function creatingList(item) {
+        let add = {
+            img: item.image[item.image.length - 1].link,
+            name: item.name,
+            artist: item.primaryArtists,
+            music: item.downloadUrl[item.downloadUrl.length - 1].link
+        }
+        music_list.push(add);
+    }
 
     loadTrack(track_index);
 
@@ -175,7 +189,8 @@
             track_index = 0;
         }
         loadTrack(track_index);
-        playTrack();
+        pauseTrack();
+
     }
     function prevTrack() {
         if (track_index > 0) {
@@ -184,7 +199,9 @@
             track_index = music_list.length - 1;
         }
         loadTrack(track_index);
-        playTrack();
+        pauseTrack();
+
+
     }
     function seekTo() {
         let seekto = curr_track.duration * (seek_slider.value / 100);

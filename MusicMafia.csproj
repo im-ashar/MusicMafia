@@ -4,9 +4,14 @@
 		<TargetFramework>net7.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>2cff8368-78c7-48ae-9edb-2d28a75010dd</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>.</DockerfileContext>
+		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	  <PackageReference Include="System.Text.Json" Version="7.0.2" />
 	  <PackageReference Include="z440.atl.core" Version="4.23.0" />

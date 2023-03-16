@@ -32,9 +32,9 @@
                                  class="aspect-square object-cover" />
                         </div>
                         <div class="music-title"></div>
-                        <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Name.ToString().Replace("&quot;","\"")</h3>
+                        <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Name</h3>
                         <div class="music-artist">
-                            <h3 class="pl-2">@item.PrimaryArtists[0].Name</h3>
+                            <h3 class="pl-2 truncate w-[200px]">@item.PrimaryArtists[0].Name</h3>
                         </div>
                     </div>
                 </a>
@@ -61,7 +61,7 @@
                         <div class="music-title"></div>
                         <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Name</h3>
                         <div class="music-artist">
-                            <h3 class="pl-2" >@item.Artists[0].Name</h3>
+                            <h3 class="pl-2 truncate w-[200px]">@item.Artists[0].Name</h3>
                         </div>
                     </div>
                 </a>
@@ -87,7 +87,7 @@
                         <div class="music-title"></div>
                         <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]">@item.Title</h3>
                         <div class="music-artist">
-                            <h3 class="pl-2">@item.Subtitle</h3>
+                            <h3 class="pl-2 truncate w-[200px]">@item.Subtitle</h3>
                         </div>
                     </div>
                 </a>
@@ -149,7 +149,7 @@
                         <div class="music-title"></div>
                         <h3 class="pl-2 font-bold truncate w-[200px] h-[30px]" id="music-title">@item.Title</h3>
                         <div class="music-artist">
-                            <h3 class="pl-2" id="music-artist">Total Tracks: @item.SongCount</h3>
+                            <h3 class="pl-2 truncate w-[200px]" id="music-artist">Total Tracks: @item.SongCount</h3>
                         </div>
                     </div>
                 </a>

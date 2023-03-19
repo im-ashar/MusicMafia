@@ -19,7 +19,7 @@ namespace MusicMafia.Models.APICalls
             // Read the response as a string
             var responseBody = await response.Content.ReadAsStringAsync();
             responseBody = responseBody.Replace("&quot;", "\"");
-            responseBody = responseBody.Replace("&amp;", "&"");
+            responseBody = responseBody.Replace("&amp;", "&");
             HomePage obj = JsonConvert.DeserializeObject<HomePage>(responseBody);
             return obj;
         }
@@ -32,7 +32,7 @@ namespace MusicMafia.Models.APICalls
             // Read the response as a string
             var responseBody = await response.Content.ReadAsStringAsync();
             responseBody = responseBody.Replace("&quot;", "\"");
-            responseBody = responseBody.Replace("&amp;", "&"");
+            responseBody = responseBody.Replace("&amp;", "&");
             SearchPage obj = JsonConvert.DeserializeObject<SearchPage>(responseBody);
             return obj;
         }
@@ -45,7 +45,7 @@ namespace MusicMafia.Models.APICalls
             // Read the response as a string
             var responseBody = await response.Content.ReadAsStringAsync();
             responseBody = responseBody.Replace("&quot;", "\"");
-            responseBody = responseBody.Replace("&amp;", "&"");
+            responseBody = responseBody.Replace("&amp;", "&");
             PlayNowSongPage obj = JsonConvert.DeserializeObject<PlayNowSongPage>(responseBody);
             return obj;
         }
@@ -60,7 +60,7 @@ namespace MusicMafia.Models.APICalls
             responseBody = responseBody.Replace("\"downloadUrl\":false", "\"downloadUrl\":[]");
             responseBody = responseBody.Replace("\"image\":false", "\"image\":[]");
             responseBody = responseBody.Replace("&quot;", "\"");
-            responseBody = responseBody.Replace("&amp;", "&"");
+            responseBody = responseBody.Replace("&amp;", "&");
             PlayNowAlbumPage obj = JsonConvert.DeserializeObject<PlayNowAlbumPage>(responseBody);
             return obj;
         }
@@ -75,7 +75,7 @@ namespace MusicMafia.Models.APICalls
             responseBody = responseBody.Replace("\"downloadUrl\":false", "\"downloadUrl\":[]");
             responseBody = responseBody.Replace("\"image\":false", "\"image\":[]");
             responseBody = responseBody.Replace("&quot;", "\"");
-            responseBody = responseBody.Replace("&amp;", "&"");
+            responseBody = responseBody.Replace("&amp;", "&");
             PlayNowPlaylistPage obj = JsonConvert.DeserializeObject<PlayNowPlaylistPage>(responseBody);
             return obj;
         }
